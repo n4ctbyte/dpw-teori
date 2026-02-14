@@ -1,0 +1,89 @@
+html {
+    margin: auto;
+    text-align: center;
+}
+
+ol {
+    text-align: start;
+}
+
+.bg-biru-langit {
+    padding: 1px;
+    background-color: aqua;
+}
+
+.bg-biru-tua {
+    padding: 1px;
+    background-color: blue;
+}
+
+.bg-hijau {
+    padding: 2px;
+    background-color: chartreuse;
+}
+
+.border-merah {
+    border: 1px solid red;
+}
+
+.hitam-italic-underline {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.text-biru-bold {
+    font-weight: 800;
+    color: blue;
+}
+
+.link-biru-underline {
+    color: cadetblue;
+    text-decoration-line: underline;
+    text-decoration-color: cadetblue;
+}
+
+.link-biru-underline:hover {
+    color: red;
+    text-decoration-line: underline;
+    text-decoration-color: red;
+}
+
+.bg-kuning {
+    padding-left: 40px;
+}
+
+.bg-kuning li {
+    list-style-position: outside;
+    margin: 8px 0;
+}
+
+.bg-kuning li span {
+    background-color: yellow;
+    padding: 3px 6px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td {
+    color: red;
+}
+
+.first-line-hijau::first-line {
+    background-color: chartreuse;
+}
