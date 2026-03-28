@@ -902,6 +902,7 @@
         initReveal();
         startCD();
         updateSlider();
+        toggleMusic();
       }
 
       const wDate = new Date("2030-08-26T08:00:00");
@@ -1003,45 +1004,24 @@
         setTimeout(() => el.classList.remove("show", "opacity-100"), 2000);
       }
 
-      let actx = null,
-        gainN = null,
-        oscs = [],
-        playing = false;
+      let audio = new Audio("assets/music/wedding.mp3");
+      audio.loop = true;
+      let playing = false;
+
       function toggleMusic() {
         const p = document.getElementById("ic-pl"),
           pa = document.getElementById("ic-pa");
         if (playing) {
-          oscs.forEach((o) => o.stop());
-          oscs = [];
-          gainN && gainN.disconnect();
-          actx && actx.close();
-          actx = null;
-          gainN = null;
+          audio.pause();
           playing = false;
           p.style.display = "";
           pa.style.display = "none";
-          return;
-        }
-        try {
-          actx = new (window.AudioContext || window.webkitAudioContext)();
-          gainN = actx.createGain();
-          gainN.gain.value = 0.035;
-          gainN.connect(actx.destination);
-          [261.63, 329.63, 392.0, 523.25].forEach((f) => {
-            const o = actx.createOscillator(),
-              g = actx.createGain();
-            o.type = "sine";
-            o.frequency.value = f;
-            g.gain.value = 0.25;
-            o.connect(g);
-            g.connect(gainN);
-            o.start();
-            oscs.push(o);
-          });
+        } else {
+          audio.play().catch(e => {});
           playing = true;
           p.style.display = "none";
           pa.style.display = "";
-        } catch (e) {}
+        }
       }
       updateSlider();
 
