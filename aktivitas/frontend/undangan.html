@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Wedding of Nakata & Sari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#fdf5e4",
+              cream2: "#f5e8c8",
+              brown: "#3d1e0c",
+              brown2: "#6b3a1f",
+              terra: "#c8765a",
+              terra2: "#b05e44",
+              teal: "#2d7777",
+              teal2: "#1f5555",
+              gold: "#c9a050",
+              muted: "#8a6040",
+              light: "#c4a882",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+              script: ["Dancing Script", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c8765a;
+        border-radius: 3px;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      section {
+        position: absolute;
+        inset: 0;
+        transform-origin: left center;
+        backface-visibility: hidden;
+        transition:
+          transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.8s ease;
+        z-index: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      
+      @media (max-width: 640px) {
+        #global-deco img {
+          transform: scale(0.6);
+        }
+        #global-deco img:nth-child(1) {
+           top: -80px;
+           left: -80px;
+        }
+        #global-deco img:nth-child(2) {
+           top: -60px;
+           right: -60px;
+        }
+        #global-deco img:nth-child(3) {
+           bottom: -80px;
+           right: -80px;
+        }
+        .ayat-container {
+           padding-top: 1rem;
+        }
+        #nav-left, #nav-right {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#d9cbb8] text-brown overflow-hidden h-screen w-screen font-sans"
+  >
+    <div
+      id="toast"
+      class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-teal text-white px-6 py-2 rounded-full text-xs opacity-0 transition-opacity pointer-events-none z-[1000]"
+    >
+      Berhasil disalin!
+    </div>
+
+    <div
+      id="page-cover"
+      class="fixed inset-0 z-[500] bg-cream flex items-center justify-center transition-all duration-800 overflow-hidden"
+    >
+      <div
+        class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[55px] bg-white z-0 shadow-sm"
+      ></div>
+
+      <div
+        class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[70px] bg-[#cb8d6d] z-10 shadow-sm"
+      ></div>
+
+      <span
+        class="absolute bottom-1/2 left-1/2 ml-[10px] mb-[75px] z-20 [writing-mode:vertical-rl] rotate-180 text-[0.65rem] tracking-[0.25em] text-brown uppercase font-medium whitespace-nowrap"
+      >
+        The Wedding of Nakata and Sari
+      </span>
+
+      <span
+        class="absolute top-1/2 right-1/2 mr-[10px] mt-[75px] z-20 [writing-mode:vertical-rl] text-[0.65rem] tracking-[0.25em] text-brown uppercase font-medium whitespace-nowrap"
+      >
+        The Wedding of Nakata and Sari
+      </span>
+
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer hover:scale-105 transition-transform duration-300"
+        onclick="openInv()"
+      >
+        <div
+          class="absolute -bottom-[22px] left-1/2 -translate-x-1/2 w-[100px] flex justify-between -z-10"
+        >
+          <div
+            class="w-[42px] h-[55px] bg-[#cb8d6d] rotate-[45deg] origin-top-right translate-x-[8px] shadow-sm"
+          ></div>
+          <div
+            class="w-[42px] h-[55px] bg-[#cb8d6d] -rotate-[45deg] origin-top-left -translate-x-[8px] shadow-sm"
+          ></div>
+        </div>
+
+        <div
+          class="w-[130px] h-[130px] rounded-full bg-[#b87656] flex flex-col items-center justify-center shadow-[0_5px_15px_rgba(0,0,0,0.15)] border-[3px] border-white/30"
+        >
+          <div
+            class="font-script text-[1.3rem] text-white leading-none mb-1 mt-1"
+          >
+            N ♡ S
+          </div>
+          <div
+            class="font-sans text-[0.75rem] font-bold text-white uppercase tracking-wider text-center leading-tight mt-1"
+          >
+            Buka<br />Undangan
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[85px] w-[180px] bg-white rounded-[16px] text-center py-3.5 px-4 shadow-[0_4px_15px_rgba(0,0,0,0.06)] z-20"
+      >
+        <p class="text-[0.65rem] text-muted mb-1 font-medium">Kepada Yth.</p>
+        <p
+          class="font-serif text-[1.1rem] font-bold text-brown leading-none"
+          id="g-name"
+        >
+          Selvia
+        </p>
+      </div>
+    </div>
+
+    <div
+      id="main"
+      class="fixed inset-0 opacity-0 transition-opacity duration-500 delay-200 pointer-events-none z-[100] [perspective:2000px] flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none z-[9999] overflow-hidden"
+        aria-hidden="true"
+      >
+        <img
+          src="assets/img/bunga.png"
+          alt="Bunga Kiri Atas"
+          class="absolute -top-[30px] left-[300px] w-[180px] sm:w-[260px] object-contain scale-[1.2] transition-transform duration-300"
+        />
+        <img
+          src="assets/img/piring.png"
+          alt="Piring Kanan Atas"
+          class="absolute -top-[30px] right-[250px] w-[150px] sm:w-[220px] object-contain scale-[1.8] transition-transform duration-300"
+        />
+        <img
+          src="assets/img/bunga.png"
+          alt="Bunga Kanan Bawah"
+          class="absolute -bottom-[60px] right-[300px] w-[180px] sm:w-[260px] object-contain rotate-180 scale-[1.2] transition-transform duration-300"
+        />
+      </div>
+
+      <div
+        id="inv-container"
+        class="relative w-full max-w-[850px] h-full bg-cream shadow-2xl overflow-hidden border-[12px] sm:border-[16px] border-white"
+      >
+        <button
+          id="nav-left"
+          class="absolute top-1/2 -translate-y-1/2 left-4 z-[900] bg-teal/80 backdrop-blur-sm text-white w-10 h-10 rounded-full hidden items-center justify-center shadow-lg text-lg hover:bg-teal transition-all pointer-events-auto"
+          onclick="prevSec()"
+        >
+          ❮
+        </button>
+        <button
+          id="nav-right"
+          class="absolute top-1/2 -translate-y-1/2 right-4 z-[900] bg-teal/80 backdrop-blur-sm text-white w-10 h-10 rounded-full hidden items-center justify-center shadow-lg text-lg hover:bg-teal transition-all pointer-events-auto"
+          onclick="nextSec()"
+        >
+          ❯
+        </button>
+
+        <div
+          id="slider-track"
+          class="relative w-full h-full [transform-style:preserve-3d]"
+        >
+          <section
+            class="px-6 py-6 bg-cream flex flex-col justify-center"
+          >
+            <div class="w-full max-w-[500px] mx-auto text-center relative z-10">
+              <div
+                class="reveal w-[240px] h-[240px] mx-auto mb-4 flex items-center justify-center relative"
+              >
+                <img
+                  src="assets/img/img-border-removebg-preview.png"
+                  alt="Bingkai Floral"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <p class="reveal d1 font-script text-brown text-[2.6rem]">
+                The Wedding of
+              </p>
+              <p
+                class="reveal d2 font-serif text-[2.4rem] font-bold text-brown my-1.5"
+              >
+                Nakata
+                <span
+                  class="font-script text-[3rem] font-normal text-terra mx-1"
+                  >&</span
+                >
+                Sari
+              </p>
+              <p class="reveal d3 font-script text-[1.5rem] text-terra">
+                Save the Date
+              </p>
+              <p class="reveal text-[0.82rem] text-muted mt-3 mb-0.5">Kamis</p>
+              <p
+                class="reveal d1 font-serif text-[1.12rem] font-bold text-brown"
+              >
+                26 Agustus 2030
+              </p>
+              <div
+                class="reveal d2 flex gap-3 justify-center my-6"
+                id="countdown"
+              >
+                <div
+                  class="w-[70px] border-2 border-dashed border-terra py-3 px-1.5 text-center"
+                >
+                  <span
+                    class="font-serif text-2xl font-bold text-brown block leading-none"
+                    id="cd"
+                    >00</span
+                  >
+                  <span
+                    class="text-[0.57rem] tracking-widest text-muted uppercase block mt-1"
+                    >Hari</span
+                  >
+                </div>
+                <div
+                  class="w-[70px] border-2 border-dashed border-terra py-3 px-1.5 text-center"
+                >
+                  <span
+                    class="font-serif text-2xl font-bold text-brown block leading-none"
+                    id="ch"
+                    >00</span
+                  >
+                  <span
+                    class="text-[0.57rem] tracking-widest text-muted uppercase block mt-1"
+                    >Jam</span
+                  >
+                </div>
+                <div
+                  class="w-[70px] border-2 border-dashed border-terra py-3 px-1.5 text-center"
+                >
+                  <span
+                    class="font-serif text-2xl font-bold text-brown block leading-none"
+                    id="cm"
+                    >00</span
+                  >
+                  <span
+                    class="text-[0.57rem] tracking-widest text-muted uppercase block mt-1"
+                    >Menit</span
+                  >
+                </div>
+                <div
+                  class="w-[70px] border-2 border-dashed border-terra py-3 px-1.5 text-center"
+                >
+                  <span
+                    class="font-serif text-2xl font-bold text-brown block leading-none"
+                    id="cs"
+                    >00</span
+                  >
+                  <span
+                    class="text-[0.57rem] tracking-widest text-muted uppercase block mt-1"
+                    >Detik</span
+                  >
+                </div>
+              </div>
+              <p class="reveal d3 font-script text-[0.92rem] text-muted mt-4">
+                Geser Kanan ❯
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="px-6 py-6 bg-cream flex flex-col justify-center ayat-container relative"
+          >
+            <div class="w-full max-w-[500px] mx-auto text-center relative z-10 pt-10 sm:pt-0">
+              <p class="reveal text-[1.38rem] text-terra font-semibold mb-4">
+                اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
+              </p>
+              <p class="reveal d1 text-[0.84rem] text-muted leading-[1.9] mb-3 px-4 sm:px-0">
+                Wahai manusia! Bertakwalah kepada Tuhanmu yang telah menciptakan
+                kamu dari diri yang satu (Adam), dan (Allah) menciptakan
+                pasangannya (Hawa) dari (diri)nya; dan dari keduanya Allah
+                mengembangbiakkan laki-laki dan perempuan yang banyak.
+                Bertakwalah kepada Allah yang dengan nama-Nya kamu saling
+                meminta, dan (peliharalah) hubungan kekeluargaan. Sesungguhnya
+                Allah selalu menjaga dan mengawasimu.
+              </p>
+              <p
+                class="reveal d2 text-[0.73rem] text-terra font-semibold mb-4.5"
+              >
+                An-Nisa' Ayat 1
+              </p>
+              <div
+                class="reveal d3 flex items-center gap-3 my-5 mx-auto max-w-[280px] before:flex-1 before:h-px before:bg-light after:flex-1 after:h-px after:bg-light"
+              >
+                <span class="text-terra">✦</span>
+              </div>
+              <p class="reveal text-[0.84rem] text-muted leading-[1.9] mb-6">
+                Dengan segala kerendahan hati<br />Kami mengundang
+                <strong>Bapak/Ibu/Saudara/i</strong><br />untuk menghadiri
+                pernikahan kami,
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div
+                  class="reveal bg-white rounded-xl p-4 shadow-sm text-center mx-4 sm:mx-0"
+                >
+                  <div
+                    class="w-[115px] h-[115px] mx-auto mb-3 flex items-center justify-center relative"
+                  >
+                    <img
+                      src="assets/img/nakata-profile.png"
+                      alt="Nakata"
+                      class="absolute top-[25%] left-[29%] w-[58%] h-[58%] object-cover z-0"
+                    />
+                    <img
+                      src="assets/img/img-border-removebg-preview.png"
+                      alt="Bingkai Floral"
+                      class="relative w-full h-full object-contain z-10"
+                    />
+                  </div>
+                  <p class="font-serif text-[0.92rem] font-bold">
+                    Nakata Christian
+                  </p>
+                  <p class="text-[0.67rem] text-muted mt-2">
+                    Putra dari<br /><strong>Bapak Budi</strong> &
+                    <strong>Ibu Halimah</strong>
+                  </p>
+                </div>
+                <div
+                  class="reveal d1 bg-white rounded-xl p-4 shadow-sm text-center mx-4 sm:mx-0"
+                >
+                  <div
+                    class="w-[115px] h-[115px] mx-auto mb-3 flex items-center justify-center relative"
+                  >
+                    <img
+                      src="assets/img/sari-profile.png"
+                      alt="Sari"
+                      class="absolute top-[25%] left-[29%] w-[58%] h-[58%] object-cover z-0"
+                    />
+                    <img
+                      src="assets/img/img-border-removebg-preview.png"
+                      alt="Bingkai Floral"
+                      class="relative w-full h-full object-contain z-10"
+                    />
+                  </div>
+                  <p class="font-serif text-[0.92rem] font-bold">
+                    Sari Rizky Mei Putri
+                  </p>
+                  <p class="text-[0.67rem] text-muted mt-2">
+                    Putri dari<br /><strong>Bapak Rudi</strong> &
+                    <strong>Ibu Salimah</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[500px] mx-auto text-center relative z-10">
+              <div
+                class="reveal w-[125px] h-[125px] rounded-full bg-gradient-to-br from-[#f5b0a0] to-[#eca090] mx-auto mb-6 flex flex-col items-center justify-center relative shadow-lg before:content-[''] before:absolute before:w-[145px] before:h-[145px] before:rounded-full before:border-[1.5px] before:border-dashed before:border-terra/35 after:content-['♥_♥'] after:absolute after:-top-2 after:left-1/2 after:-translate-x-1/2 after:text-brown after:text-[0.58rem] after:tracking-[0.4em]"
+              >
+                <div
+                  class="font-script text-[1.45rem] text-brown font-semibold leading-tight"
+                >
+                  Save the<br />Date
+                </div>
+              </div>
+              <p class="reveal font-script text-[1.95rem] text-brown mb-1.5">
+                Waktu Dan Tempat
+              </p>
+              <p class="reveal d1 text-[0.84rem] text-muted mb-1">
+                Ingatkan saya melalui google calendar
+              </p>
+              <a
+                href="https://calendar.google.com/calendar/r/eventedit?text=The+Wedding+of+Nakata+%26+Sari&dates=20300826T080000/20300826T230000"
+                target="_blank"
+                class="reveal d2 inline-flex items-center gap-2 px-5 py-2 bg-teal text-white rounded-full text-[0.7rem] font-medium no-underline hover:bg-teal2 transition-colors my-4"
+                >🔔 Atur Pengingat</a
+              >
+              <div class="reveal d1">
+                <p class="font-serif text-[1.25rem] font-bold text-brown">
+                  Akad
+                </p>
+                <p class="text-[0.82rem] text-muted mt-1.5">
+                  Kamis, 26 Agustus 2030
+                </p>
+                <p class="text-[0.82rem] text-muted">
+                  Pukul 08.00 WIB - Selesai
+                </p>
+              </div>
+              <div
+                class="reveal h-[4px] my-6 rounded-full bg-[linear-gradient(90deg,transparent_0%,#6ab0b0_15%,#c8765a_50%,#6ab0b0_85%,transparent_100%)] shadow-sm"
+              ></div>
+              <div class="reveal d1">
+                <p class="font-serif text-[1.25rem] font-bold text-brown">
+                  Resepsi
+                </p>
+                <p class="text-[0.82rem] text-muted mt-1.5">
+                  Kamis, 26 Agustus 2030
+                </p>
+                <p class="text-[0.82rem] text-muted">
+                  Pukul 10.00 WIB - Selesai
+                </p>
+              </div>
+              <p
+                class="reveal d2 text-[0.78rem] font-bold tracking-widest uppercase text-brown mt-3 mb-2"
+              >
+                HOTEL FURAYA
+              </p>
+              <div
+                class="reveal d2 w-full h-[195px] border-2 border-gold/40 rounded-lg overflow-hidden my-3 bg-[#e8f0e8]"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.664402636952!2d101.44238517584143!3d0.5348914638706037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ac0330612479%3A0x8146603a11952e46!2sHotel%20Furaya!5e0!3m2!1sid!2sid!4v1710500000000!5m2!1sid!2sid"
+                  class="w-full h-full border-none"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <p
+                class="reveal d2 text-[0.77rem] text-muted my-2 mx-auto max-w-[350px]"
+              >
+                Jl. Jend. Sudirman No. 72 Sago, Kecamatan Senapelan, Pekanbaru
+              </p>
+              <a
+                href="https://maps.app.goo.gl/X9L2vPAnX6r7ZfA77"
+                target="_blank"
+                class="reveal d3 inline-flex items-center gap-1.5 text-teal text-[0.8rem] font-bold no-underline border-b-[1.5px] border-teal pb-0.5"
+                >📍 Buka di Google Maps</a
+              >
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream flex flex-col justify-center">
+            <div class="w-full max-w-[680px] mx-auto text-center relative z-10">
+              <div class="reveal mb-6 relative">
+                <img src="assets/img/tanaman.png" alt="Tanaman Hias" class="w-[80px] mx-auto opacity-80" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+                <div class="reveal">
+                  <p
+                    class="font-script text-[1.28rem] font-semibold text-brown mb-3"
+                  >
+                    Harapan Pengantin Pria
+                  </p>
+                  <p class="text-[0.74rem] text-muted leading-[1.85]">
+                    Tiada yang sempurna selain cinta yang dipersatukan oleh
+                    Allah SWT. Aku berharap kita dapat saling menjaga, memahami,
+                    dan menguatkan dalam setiap keadaan. Semoga rumah tangga
+                    kita dipenuhi keberkahan, kesabaran, dan kebahagiaan hingga
+                    akhir hayat.
+                  </p>
+                </div>
+                <div class="reveal d2">
+                  <p
+                    class="font-script text-[1.28rem] font-semibold text-brown mb-3"
+                  >
+                    Harapan Pengantin Wanita
+                  </p>
+                  <p class="text-[0.74rem] text-muted leading-[1.85]">
+                    Ya Allah jadikanlah kami keluarga yang sakinah, mawaddah,
+                    warahmah. Semoga kami dapat saling mencintai, menghargai,
+                    dan mendampingi dalam setiap langkah kehidupan. Jadikanlah
+                    rumah tangga kami penuh kasih sayang, keberkahan, dan selalu
+                    dalam lindungan-Mu.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[680px] mx-auto text-center relative z-10">
+              <p class="reveal font-script text-brown text-[2.6rem]">
+                Our Love Story
+              </p>
+              <p
+                class="reveal d1 font-serif text-[1.35rem] font-bold text-brown mb-6"
+              >
+                Nakata
+                <span class="font-script text-[1.7rem] text-terra font-normal"
+                  >&</span
+                >
+                Sari
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div
+                  class="reveal bg-white rounded-xl p-4 shadow-sm text-center"
+                >
+                  <div
+                    class="w-full h-[115px] rounded-lg bg-gradient-to-br from-[#e8d8c0] to-[#d4c0a0] flex items-center justify-center text-[0.58rem] text-light mb-3 overflow-hidden"
+                  >
+                    <img src="assets/img/college.png" alt="First Met" class="w-full h-full object-cover" />
+                  </div>
+                  <p
+                    class="font-serif font-bold text-[0.87rem] text-brown mb-1"
+                  >
+                    When We First Met
+                  </p>
+                  <p class="text-[0.7rem] text-terra font-semibold mb-2">
+                    September 5, 2024
+                  </p>
+                  <p class="text-[0.7rem] text-muted leading-relaxed">
+                    We First Met on the very first day of college. Everything
+                    felt unfamiliar back then, but from that simple encounter in
+                    the classroom, our introduction began.
+                  </p>
+                </div>
+                <div
+                  class="reveal d2 bg-white rounded-xl p-4 shadow-sm text-center"
+                >
+                  <div
+                    class="w-full h-[115px] rounded-lg bg-gradient-to-br from-[#e8d8c0] to-[#d4c0a0] flex items-center justify-center text-[0.58rem] text-light mb-3 overflow-hidden"
+                  >
+                    <img src="assets/img/proposal.png" alt="Proposal" class="w-full h-full object-cover" />
+                  </div>
+                  <p
+                    class="font-serif font-bold text-[0.87rem] text-brown mb-1"
+                  >
+                    The Proposal
+                  </p>
+                  <p class="text-[0.7rem] text-terra font-semibold mb-2">
+                    February 16, 2028
+                  </p>
+                  <p class="text-[0.7rem] text-muted leading-relaxed">
+                    For years after our first meeting we decided to take a more
+                    serious step. On February, 2028, he came to my house with
+                    his family to officially propose.
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-center mt-4">
+                <div
+                  class="reveal d1 bg-white rounded-xl p-4 shadow-sm text-center w-full max-w-[315px]"
+                >
+                  <div
+                    class="w-full h-[155px] rounded-lg bg-gradient-to-br from-[#e8d8c0] to-[#d4c0a0] flex items-center justify-center text-[0.58rem] text-light mb-3 overflow-hidden"
+                  >
+                    <img src="assets/img/prewed.png" alt="Prewedding" class="w-full h-full object-cover" />
+                  </div>
+                  <p
+                    class="font-serif font-bold text-[0.87rem] text-brown mb-1"
+                  >
+                    The Wedding
+                  </p>
+                  <p class="text-[0.7rem] text-terra font-semibold mb-2">
+                    August 26, 2030
+                  </p>
+                  <p class="text-[0.7rem] text-muted leading-relaxed">
+                    Exactly two years after the proposal, August 26, 2030,
+                    became the day we had been waiting for. In front of our
+                    families, we vowed to share lives together.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[680px] mx-auto text-center relative z-10">
+              <p class="reveal font-script text-brown text-[2.6rem]">Gallery</p>
+              <p
+                class="reveal d1 font-serif text-[1.2rem] font-bold text-brown mb-4"
+              >
+                Nakata
+                <span class="font-script text-terra font-normal">&</span> Sari
+              </p>
+              <div
+                class="reveal d1 w-full aspect-[4/3] border-[3px] border-[#e8cdb0] rounded cursor-pointer my-4 overflow-hidden relative shadow-sm"
+              >
+                <img src="assets/img/prewed.png" alt="Gallery Main" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="reveal d2 grid grid-cols-2 gap-3 mt-4">
+                <div
+                  class="aspect-square border-[2.5px] border-terra rounded cursor-pointer overflow-hidden relative shadow-sm"
+                >
+                  <img src="assets/img/prewed.png" alt="Gallery" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div
+                  class="aspect-square border-[2.5px] border-terra rounded cursor-pointer overflow-hidden relative shadow-sm"
+                >
+                  <img src="assets/img/prewed.png" alt="Gallery" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div
+                  class="aspect-square border-[2.5px] border-terra rounded cursor-pointer overflow-hidden relative shadow-sm"
+                >
+                  <img src="assets/img/prewed.png" alt="Gallery" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div
+                  class="aspect-square border-[2.5px] border-terra rounded cursor-pointer overflow-hidden relative shadow-sm"
+                >
+                  <img src="assets/img/prewed.png" alt="Gallery" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[600px] mx-auto text-center relative z-10">
+              <p class="reveal font-script text-brown text-[2.6rem]">
+                Kirim Pesan
+              </p>
+              <p class="reveal d1 text-[0.84rem] text-muted mb-2">
+                Berikan ucapan terbaikmu
+              </p>
+              <div
+                class="reveal d2 bg-white rounded-[14px] p-7 shadow-sm text-left mt-4"
+              >
+                <label
+                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                  for="fn"
+                  >Nama</label
+                >
+                <input
+                  type="text"
+                  id="fn"
+                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
+                  placeholder="Nama"
+                />
+                <label
+                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                  for="fa"
+                  >Konfirmasi Kehadiran</label
+                >
+                <select
+                  id="fa"
+                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
+                >
+                  <option value="hadir">Saya berencana hadir</option>
+                  <option value="ragu">Saya masih ragu</option>
+                  <option value="tidak">Maaf saya tidak bisa hadir</option>
+                </select>
+                <label
+                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                  for="fm"
+                  >Pesan</label
+                >
+                <textarea
+                  id="fm"
+                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5 min-h-[88px] resize-vertical"
+                  placeholder="Pesan"
+                ></textarea>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button
+                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2d8040] text-white text-[0.68rem] font-medium"
+                    onclick="alert('Stiker segera hadir! 🎉')"
+                  >
+                    🎭 Stiker
+                  </button>
+                  <button
+                    class="px-4 py-2 rounded-full bg-[#c89820] text-white text-[0.68rem] font-medium"
+                    onclick="clrForm()"
+                  >
+                    Batal
+                  </button>
+                  <button
+                    class="px-4 py-2 rounded-full bg-cream2 text-brown border border-light text-[0.68rem] font-bold ml-auto hover:bg-terra hover:text-white hover:border-terra transition-all"
+                    onclick="submitMsg()"
+                  >
+                    Kirim ›
+                  </button>
+                </div>
+              </div>
+              <div id="msg-list" class="mt-6 text-left"></div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[500px] mx-auto text-center relative z-10">
+              <div class="reveal mb-6 relative">
+                <img src="assets/img/tanaman.png" alt="Tanaman Hias" class="w-[80px] mx-auto opacity-80" />
+              </div>
+              <div
+                class="reveal w-[62px] h-[62px] bg-cream2 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl"
+              >
+                💌
+              </div>
+              <p
+                class="reveal d1 font-serif text-[1.55rem] font-bold text-brown"
+              >
+                Amplop Digital
+              </p>
+              <div
+                class="reveal d2 flex items-center gap-3 my-4 mx-auto max-w-[280px] before:flex-1 before:h-px before:bg-light after:flex-1 after:h-px after:bg-light"
+              >
+                <span class="text-terra">✦</span>
+              </div>
+              <p
+                class="reveal d2 text-[0.84rem] text-muted mb-4.5 leading-[1.9]"
+              >
+                Bagi yang ingin mengirim tanda suka cita bisa melalui no
+                rekening berikut.
+              </p>
+              <div class="flex justify-center gap-4 mt-4">
+                <div class="reveal bg-white rounded-xl p-4 shadow-sm text-left flex-1 max-w-[220px]">
+                  <div
+                    class="w-9 h-9 bg-teal rounded-lg text-white font-bold text-[0.95rem] flex items-center justify-center mb-2.5"
+                  >
+                    D
+                  </div>
+                  <p class="font-serif text-[0.95rem] font-bold text-brown">
+                    082284865780
+                  </p>
+                  <p class="text-[0.62rem] text-muted mb-1">(DANA)</p>
+                  <p class="text-[0.67rem] text-muted">
+                    Atas Nama Nakata Christian
+                  </p>
+                  <button
+                    class="mt-2 px-3.5 py-1 border border-light rounded-full bg-cream text-[0.62rem] text-muted hover:bg-teal hover:text-white hover:border-teal transition-all"
+                    onclick="copyText('082284865780')"
+                  >
+                    Salin
+                  </button>
+                </div>
+                <div
+                  class="reveal d2 bg-white rounded-xl p-4 shadow-sm text-left flex-1 max-w-[220px]"
+                >
+                  <div
+                    class="w-9 h-9 bg-teal rounded-lg text-white font-bold text-[0.95rem] flex items-center justify-center mb-2.5"
+                  >
+                    D
+                  </div>
+                  <p class="font-serif text-[0.95rem] font-bold text-brown">
+                    082285468511
+                  </p>
+                  <p class="text-[0.62rem] text-muted mb-1">(DANA)</p>
+                  <p class="text-[0.67rem] text-muted">
+                    Atas Nama Sari Rizky Mei Putri
+                  </p>
+                  <button
+                    class="mt-2 px-3.5 py-1 border border-light rounded-full bg-cream text-[0.62rem] text-muted hover:bg-teal hover:text-white hover:border-teal transition-all"
+                    onclick="copyText('082285468511')"
+                  >
+                    Salin
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="px-6 py-16 bg-cream">
+            <div class="w-full max-w-[500px] mx-auto text-center relative z-10">
+              <div class="reveal mb-6 relative">
+                <img src="assets/img/tanaman.png" alt="Tanaman Hias" class="w-[80px] mx-auto opacity-80" />
+              </div>
+              <p class="reveal font-script text-brown text-[2.6rem]">
+                Thank You
+              </p>
+              <div
+                class="reveal d1 flex items-center gap-3 my-4 mx-auto max-w-[280px] before:flex-1 before:h-px before:bg-light after:flex-1 after:h-px after:bg-light"
+              >
+                <span class="text-terra">♡</span>
+              </div>
+              <p
+                class="reveal d1 text-[0.84rem] text-muted leading-[1.9] max-w-[390px] mx-auto mb-6"
+              >
+                Terima kasih banyak telah menjadi bagian dari hari pernikahan
+                kami. Kehadiran Anda sangat berarti bagi kami dan menjadi
+                kebahagiaan tersendiri dalam momen istimewa ini. Kami sangat
+                bersyukur atas doa, cinta, dan dukungan yang Anda berikan.
+                Semoga kebaikan Anda dibalas dengan kebahagiaan, kesehatan, dan
+                keberkahan.
+              </p>
+              <p class="reveal d2 text-[0.88rem] font-bold text-brown">
+                Warmest wishes, Nakata & Sari
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+      
+      <button
+        id="music-btn"
+        onclick="toggleMusic()"
+        class="fixed bottom-6 right-6 z-[99999] w-[52px] h-[52px] rounded-full bg-teal flex items-center justify-center shadow-[0_4px_16px_rgba(45,119,119,0.4)] transition-transform hover:scale-110 pointer-events-auto"
+      >
+        <svg
+          id="ic-pl"
+          class="fill-white w-[22px] h-[22px]"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3z" />
+        </svg>
+        <svg
+          id="ic-pa"
+          class="fill-white w-[22px] h-[22px]"
+          viewBox="0 0 24 24"
+          style="display: none"
+        >
+          <rect x="6" y="4" width="4" height="16" />
+          <rect x="14" y="4" width="4" height="16" />
+        </svg>
+      </button>
+    </div>
+
+    <script>
+      const gn = new URLSearchParams(location.search).get("to") || "Selvia";
+      document.getElementById("g-name").textContent = gn;
+      let currentIdx = 0;
+      const sections = document.querySelectorAll("section");
+      const btnL = document.getElementById("nav-left");
+      const btnR = document.getElementById("nav-right");
+
+      function updateSlider() {
+        sections.forEach((sec, i) => {
+          if (i < currentIdx) {
+            sec.style.transform = "rotateY(-180deg)";
+            sec.style.opacity = "0";
+            sec.style.zIndex = "1";
+            sec.style.pointerEvents = "none";
+          } else if (i === currentIdx) {
+            sec.style.transform = "rotateY(0deg)";
+            sec.style.opacity = "1";
+            sec.style.zIndex = "10";
+            sec.style.pointerEvents = "all";
+          } else {
+            sec.style.transform = "rotateY(0deg)";
+            sec.style.opacity = "0";
+            sec.style.zIndex = "1";
+            sec.style.pointerEvents = "none";
+          }
+        });
+        btnL.classList.toggle("hidden", currentIdx === 0);
+        btnL.classList.toggle("sm:flex", currentIdx > 0);
+        btnL.classList.toggle("flex", false);
+        btnR.classList.toggle("hidden", currentIdx === sections.length - 1);
+        btnR.classList.toggle("sm:flex", currentIdx < sections.length - 1);
+        btnR.classList.toggle("flex", false);
+      }
+
+      function nextSec() {
+        if (currentIdx < sections.length - 1) {
+          currentIdx++;
+          updateSlider();
+        }
+      }
+      function prevSec() {
+        if (currentIdx > 0) {
+          currentIdx--;
+          updateSlider();
+        }
+      }
+
+      function openInv() {
+        document.getElementById("page-cover").style.opacity = "0";
+        document.getElementById("page-cover").style.transform = "scale(0.95)";
+        document.getElementById("page-cover").style.pointerEvents = "none";
+        document.getElementById("main").classList.remove("opacity-0");
+        document.getElementById("main").classList.add("opacity-100");
+        document.getElementById("main").style.pointerEvents = "all";
+        initReveal();
+        startCD();
+        updateSlider();
+      }
+
+      const wDate = new Date("2030-08-26T08:00:00");
+      function startCD() {
+        function tick() {
+          const diff = wDate - Date.now();
+          if (diff <= 0) {
+            document.getElementById("countdown").innerHTML =
+              "<p class='text-terra font-script text-2xl py-4'>Selamat Menempuh Hidup Baru 💍</p>";
+            return;
+          }
+          const d = Math.floor(diff / 86400000),
+            h = Math.floor((diff % 86400000) / 3600000),
+            m = Math.floor((diff % 3600000) / 60000),
+            s = Math.floor((diff % 60000) / 1000);
+          document.getElementById("cd").textContent = String(d).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("ch").textContent = String(h).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("cm").textContent = String(m).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("cs").textContent = String(s).padStart(
+            2,
+            "0",
+          );
+        }
+        tick();
+        setInterval(tick, 1000);
+      }
+
+      function initReveal() {
+        const obs = new IntersectionObserver(
+          (ee) => {
+            ee.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      }
+
+      let messages = [];
+      const slbl = { hadir: "Hadir", tidak: "Tidak Hadir", ragu: "Masih Ragu" };
+      function submitMsg() {
+        const n = document.getElementById("fn").value.trim(),
+          a = document.getElementById("fa").value,
+          m = document.getElementById("fm").value.trim();
+        if (!n || !m) {
+          alert("Isi nama dan pesan!");
+          return;
+        }
+        const t = new Date().toLocaleTimeString("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        messages.unshift({ n, a, m, t });
+        renderMsgs();
+        clrForm();
+      }
+      function clrForm() {
+        document.getElementById("fn").value = "";
+        document.getElementById("fm").value = "";
+        document.getElementById("fa").selectedIndex = 0;
+      }
+      function esc(s) {
+        return s.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+      }
+
+      function renderMsgs() {
+        const el = document.getElementById("msg-list");
+        el.innerHTML = messages
+          .map((m) => {
+            const bCls =
+              m.a === "hadir"
+                ? "bg-[#dcf0e0] text-[#2d6030]"
+                : m.a === "tidak"
+                  ? "bg-[#fde8e0] text-[#8a2010]"
+                  : "bg-[#fff3d0] text-[#8a6010]";
+            return `<div class="flex gap-3 py-3 border-b border-terra/10"><div class="w-[34px] h-[34px] rounded-full bg-gradient-to-br from-terra to-terra2 flex items-center justify-center text-white font-bold text-[0.78rem] shrink-0">${esc(m.n[0].toUpperCase())}</div><div class="flex-1"><div class="flex justify-between items-center mb-1"><span class="text-[0.8rem] font-semibold text-brown">${esc(m.n)}</span><span class="text-[0.57rem] px-2 py-0.5 rounded-full ${bCls}">${slbl[m.a]}</span></div><p class="text-[0.74rem] text-muted leading-relaxed">${esc(m.m)}</p><p class="text-[0.6rem] text-light mt-1">${m.t}</p></div></div>`;
+          })
+          .join("");
+      }
+
+      function copyText(t) {
+        navigator.clipboard.writeText(t).catch(() => {});
+        const el = document.getElementById("toast");
+        el.classList.add("show", "opacity-100");
+        setTimeout(() => el.classList.remove("show", "opacity-100"), 2000);
+      }
+
+      let actx = null,
+        gainN = null,
+        oscs = [],
+        playing = false;
+      function toggleMusic() {
+        const p = document.getElementById("ic-pl"),
+          pa = document.getElementById("ic-pa");
+        if (playing) {
+          oscs.forEach((o) => o.stop());
+          oscs = [];
+          gainN && gainN.disconnect();
+          actx && actx.close();
+          actx = null;
+          gainN = null;
+          playing = false;
+          p.style.display = "";
+          pa.style.display = "none";
+          return;
+        }
+        try {
+          actx = new (window.AudioContext || window.webkitAudioContext)();
+          gainN = actx.createGain();
+          gainN.gain.value = 0.035;
+          gainN.connect(actx.destination);
+          [261.63, 329.63, 392.0, 523.25].forEach((f) => {
+            const o = actx.createOscillator(),
+              g = actx.createGain();
+            o.type = "sine";
+            o.frequency.value = f;
+            g.gain.value = 0.25;
+            o.connect(g);
+            g.connect(gainN);
+            o.start();
+            oscs.push(o);
+          });
+          playing = true;
+          p.style.display = "none";
+          pa.style.display = "";
+        } catch (e) {}
+      }
+      updateSlider();
+
+      let tsX = 0, tsY = 0;
+      const trk = document.getElementById("slider-track");
+      trk.addEventListener("touchstart", e => {
+        tsX = e.changedTouches[0].screenX;
+        tsY = e.changedTouches[0].screenY;
+      }, {passive: true});
+      trk.addEventListener("touchend", e => {
+        const teX = e.changedTouches[0].screenX;
+        const teY = e.changedTouches[0].screenY;
+        const dx = tsX - teX;
+        const dy = tsY - teY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+          if (dx > 0) nextSec();
+          else prevSec();
+        }
+      }, {passive: true});
+    </script>
+  </body>
+</html>
