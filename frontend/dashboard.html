@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Nakata & Sari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#fbf6ed",
+              brown: "#3d1e0c",
+              terra: "#d48c6a",
+              terra2: "#b87556",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+              script: ["Dancing Script", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .shake {
+        animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+      }
+      @keyframes shake {
+        10%, 90% { transform: translate3d(-1px, 0, 0); }
+        20%, 80% { transform: translate3d(2px, 0, 0); }
+        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+        40%, 60% { transform: translate3d(4px, 0, 0); }
+      }
+    </style>
+  </head>
+  <body class="bg-cream text-brown font-sans h-screen flex flex-col md:flex-row overflow-hidden">
+    
+    <div id="login-overlay" class="fixed inset-0 z-[9999] bg-cream flex items-center justify-center p-4 transition-opacity duration-500">
+      <div id="login-card" class="bg-terra w-full max-w-[480px] rounded-xl p-8 md:p-12 text-center shadow-lg transition-transform duration-300">
+        <div class="font-script text-white text-[2.5rem] leading-none mb-4">N ♡ S</div>
+        <h2 class="font-serif font-bold text-brown text-lg md:text-xl mb-8 leading-snug">
+          Masukkan Password<br />untuk Mengakses Dashboard
+        </h2>
+        <div class="relative mb-6">
+          <input 
+            type="password" 
+            id="password-input"
+            placeholder="nakatasari2030"
+            class="w-full bg-[#d1d5db] border-2 border-transparent outline-none rounded-full px-6 py-3.5 text-gray-700 text-sm placeholder-gray-500 focus:border-white/50 transition-colors"
+            onkeypress="handleKeyPress(event)"
+          />
+          <p id="error-msg" class="absolute -bottom-5 left-0 w-full text-center text-xs text-white opacity-0 transition-opacity font-medium">Password salah!</p>
+        </div>
+        <button 
+          onclick="masukDashboard()"
+          class="w-full bg-cream text-brown font-bold tracking-widest rounded-full px-6 py-3.5 hover:bg-orange-50 transition-colors text-sm shadow-sm"
+        >
+          MASUK
+        </button>
+      </div>
+    </div>
+
+    <aside class="w-full md:w-[260px] bg-cream md:border-r border-gray-300 flex flex-col justify-between p-6 shrink-0 z-20 shadow-md md:shadow-none">
+      <div>
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-12 h-12 rounded-full bg-gray-300 shrink-0"></div>
+          <span class="font-bold text-sm">Nakata - Sari</span>
+        </div>
+
+        <nav>
+          <ul class="flex flex-col gap-5 text-sm">
+            <li
+              id="nav-edit"
+              class="cursor-pointer hover:text-terra transition-colors"
+              onclick="switchTab('edit')"
+            >
+              Edit Data Landing Page
+            </li>
+            <li
+              id="nav-data"
+              class="cursor-pointer hover:text-terra transition-colors font-bold"
+              onclick="switchTab('data')"
+            >
+              Data Tamu
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <button class="bg-terra text-white rounded-full py-2.5 px-5 flex items-center gap-2 w-max hover:bg-terra2 transition-colors text-sm font-medium mt-10 md:mt-0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Keluar
+      </button>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+      <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 md:p-8 gap-4 border-b border-gray-300/50 sm:border-none">
+        <h1 class="font-serif text-[1.4rem] font-bold text-brown">
+          Selamat Datang Nakata dan Sari!
+        </h1>
+        <div class="flex items-center gap-4 w-full sm:w-auto justify-end">
+          <button class="bg-terra text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-terra2 transition-colors">
+            Preview Undangan
+          </button>
+          <button class="p-2 border-2 border-brown rounded-xl hover:bg-brown hover:text-white transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="flex-1 overflow-y-auto p-6 md:p-8 pt-0">
+        <div id="view-data" class="block animate-[fadeIn_0.3s_ease-in-out]">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-terra rounded-2xl p-6 text-center text-white flex flex-col justify-center min-h-[140px] shadow-sm">
+              <p class="text-sm mb-4">Total Tamu</p>
+              <p class="text-3xl font-serif">500</p>
+            </div>
+            <div class="bg-terra rounded-2xl p-6 text-center text-white flex flex-col justify-center min-h-[140px] shadow-sm">
+              <p class="text-sm mb-4">Hadir</p>
+              <p class="text-3xl font-serif">350</p>
+            </div>
+            <div class="bg-terra rounded-2xl p-6 text-center text-white flex flex-col justify-center min-h-[140px] shadow-sm">
+              <p class="text-sm mb-4">Tidak Hadir</p>
+              <p class="text-3xl font-serif">20</p>
+            </div>
+            <div class="bg-terra rounded-2xl p-6 text-center text-white flex flex-col justify-center min-h-[140px] shadow-sm">
+              <p class="text-sm mb-4">Belum Merespon</p>
+              <p class="text-3xl font-serif">130</p>
+            </div>
+          </div>
+
+          <div class="bg-terra rounded-2xl p-6 text-white shadow-sm overflow-x-auto">
+            <h2 class="font-serif text-xl font-bold mb-6">Tabel Aktivitas Terbaru</h2>
+            <table class="w-full min-w-[500px]">
+              <thead>
+                <tr class="text-center text-[0.95rem]">
+                  <th class="font-medium pb-4 w-1/3">Waktu</th>
+                  <th class="font-medium pb-4 w-1/3">Nama</th>
+                  <th class="font-medium pb-4 w-1/3">Pesan</th>
+                </tr>
+              </thead>
+              <tbody class="text-center text-sm">
+                <tr>
+                  <td class="py-2.5">23:59:59</td>
+                  <td class="py-2.5">Radit Batagor</td>
+                  <td class="py-2.5">Congrats!</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5">22:59:59</td>
+                  <td class="py-2.5">Pikri Imup</td>
+                  <td class="py-2.5">Samawa yah</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5">21:59:59</td>
+                  <td class="py-2.5">Rey Komtink</td>
+                  <td class="py-2.5">Congrats yh</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5">20:59:59</td>
+                  <td class="py-2.5">Farhan Kebab</td>
+                  <td class="py-2.5">Utiwi</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5">19:59:59</td>
+                  <td class="py-2.5">Rae</td>
+                  <td class="py-2.5">Samawa!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="view-edit" class="hidden animate-[fadeIn_0.3s_ease-in-out]">
+          <div class="bg-terra rounded-2xl p-6 md:p-10 text-white shadow-sm">
+            <h2 class="font-serif text-xl font-bold mb-6">Detail Acara</h2>
+            
+            <div class="mb-8">
+              <h3 class="font-serif font-bold text-lg mb-3">Akad</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Akad 1">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Akad 2">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Akad 3">
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <h3 class="font-serif font-bold text-lg mb-3">Resepsi</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Resepsi 1">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Resepsi 2">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Resepsi 3">
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-serif font-bold text-lg mb-3">Lokasi Acara</h3>
+              <div class="w-full sm:w-2/3">
+                <input type="text" class="w-full bg-[#fdf5e4] border-none outline-none rounded-full px-5 py-3 text-brown text-sm font-medium" placeholder="Input Lokasi">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+          masukDashboard();
+        }
+      }
+
+      function masukDashboard() {
+        const input = document.getElementById('password-input');
+        const overlay = document.getElementById('login-overlay');
+        const card = document.getElementById('login-card');
+        const errorMsg = document.getElementById('error-msg');
+
+        if (input.value === 'nakatasari2030') {
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 500);
+        } else {
+          errorMsg.style.opacity = '1';
+          card.classList.add('shake');
+          input.value = '';
+          setTimeout(() => {
+            card.classList.remove('shake');
+          }, 500);
+          setTimeout(() => {
+            errorMsg.style.opacity = '0';
+          }, 2000);
+        }
+      }
+
+      function switchTab(tab) {
+        document.getElementById('view-data').classList.add('hidden');
+        document.getElementById('view-edit').classList.add('hidden');
+        document.getElementById('nav-data').classList.remove('font-bold');
+        document.getElementById('nav-edit').classList.remove('font-bold');
+
+        if (tab === 'data') {
+          document.getElementById('view-data').classList.remove('hidden');
+          document.getElementById('view-data').classList.add('block');
+          document.getElementById('nav-data').classList.add('font-bold');
+        } else {
+          document.getElementById('view-edit').classList.remove('hidden');
+          document.getElementById('view-edit').classList.add('block');
+          document.getElementById('nav-edit').classList.add('font-bold');
+        }
+      }
+    </script>
+  </body>
+</html>
