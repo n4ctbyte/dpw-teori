@@ -1,3 +1,11 @@
+<?php 
+require 'koneksi.php';
+
+$nama_tamu = isset($_GET['to']) ? htmlspecialchars($_GET['to']) : "Tamu Undangan";
+
+$query_pesan = mysqli_query($conn, "SELECT * FROM tamu WHERE kehadiran != 'belum' ORDER BY waktu DESC");
+?>
+
 <!doctype html>
 <html lang="id">
   <head>
@@ -168,7 +176,7 @@
           class="font-serif text-[1.1rem] font-bold text-brown leading-none"
           id="g-name"
         >
-          Selvia
+          <?php echo $nama_tamu; ?>
         </p>
       </div>
     </div>
@@ -657,134 +665,94 @@
               <div
                 class="reveal d2 bg-white rounded-[14px] p-7 shadow-sm text-left mt-4"
               >
-                <label
-                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
-                  for="fn"
-                  >Nama</label
-                >
-                <input
-                  type="text"
-                  id="fn"
-                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
-                  placeholder="Nama"
-                />
-                <label
-                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
-                  for="fa"
-                  >Konfirmasi Kehadiran</label
-                >
-                <select
-                  id="fa"
-                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
-                >
-                  <option value="hadir">Saya berencana hadir</option>
-                  <option value="ragu">Saya masih ragu</option>
-                  <option value="tidak">Maaf saya tidak bisa hadir</option>
-                </select>
-                <label
-                  class="block text-[0.7rem] text-muted mb-1.5 font-medium"
-                  for="fm"
-                  >Pesan</label
-                >
-                <textarea
-                  id="fm"
-                  class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5 min-h-[88px] resize-vertical"
-                  placeholder="Pesan"
-                ></textarea>
-                <div class="flex flex-wrap items-center gap-2">
-                  <button
-                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2d8040] text-white text-[0.68rem] font-medium"
-                    onclick="alert('Stiker segera hadir! 🎉')"
+                <form action="simpan_pesan.php" method="POST">
+                  <label
+                    class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                    for="fn"
+                    >Nama</label
                   >
-                    🎭 Stiker
-                  </button>
-                  <button
-                    class="px-4 py-2 rounded-full bg-[#c89820] text-white text-[0.68rem] font-medium"
-                    onclick="clrForm()"
+                  <input
+                    type="text"
+                    id="fn"
+                    name="nama"
+                    value="<?php echo $nama_tamu; ?>"
+                    required
+                    class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
+                    placeholder="Nama"
+                  />
+                  <label
+                    class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                    for="fa"
+                    >Konfirmasi Kehadiran</label
                   >
-                    Batal
-                  </button>
-                  <button
-                    class="px-4 py-2 rounded-full bg-cream2 text-brown border border-light text-[0.68rem] font-bold ml-auto hover:bg-terra hover:text-white hover:border-terra transition-all"
-                    onclick="submitMsg()"
+                  <select
+                    id="fa"
+                    name="kehadiran"
+                    required
+                    class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5"
                   >
-                    Kirim ›
-                  </button>
-                </div>
-              </div>
-              <div id="msg-list" class="mt-6 text-left"></div>
-            </div>
-          </section>
-
-          <section class="px-6 py-16 bg-cream">
-            <div class="w-full max-w-[500px] mx-auto text-center relative z-10">
-              <div class="reveal mb-6 relative">
-                <img src="assets/img/tanaman.png" alt="Tanaman Hias" class="w-[80px] mx-auto opacity-80" />
-              </div>
-              <div
-                class="reveal w-[62px] h-[62px] bg-cream2 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl"
-              >
-                💌
-              </div>
-              <p
-                class="reveal d1 font-serif text-[1.55rem] font-bold text-brown"
-              >
-                Amplop Digital
-              </p>
-              <div
-                class="reveal d2 flex items-center gap-3 my-4 mx-auto max-w-[280px] before:flex-1 before:h-px before:bg-light after:flex-1 after:h-px after:bg-light"
-              >
-                <span class="text-terra">✦</span>
-              </div>
-              <p
-                class="reveal d2 text-[0.84rem] text-muted mb-4.5 leading-[1.9]"
-              >
-                Bagi yang ingin mengirim tanda suka cita bisa melalui no
-                rekening berikut.
-              </p>
-              <div class="flex justify-center gap-4 mt-4">
-                <div class="reveal bg-white rounded-xl p-4 shadow-sm text-left flex-1 max-w-[220px]">
-                  <div
-                    class="w-9 h-9 bg-teal rounded-lg text-white font-bold text-[0.95rem] flex items-center justify-center mb-2.5"
+                    <option value="hadir">Saya berencana hadir</option>
+                    <option value="ragu">Saya masih ragu</option>
+                    <option value="tidak">Maaf saya tidak bisa hadir</option>
+                  </select>
+                  <label
+                    class="block text-[0.7rem] text-muted mb-1.5 font-medium"
+                    for="fm"
+                    >Pesan</label
                   >
-                    D
+                  <textarea
+                    id="fm"
+                    name="pesan"
+                    class="w-full px-4 py-2.5 border-[1.5px] border-[#e8d8c8] rounded-lg bg-cream font-sans text-[0.8rem] text-brown outline-none focus:border-terra transition-colors mb-3.5 min-h-[88px] resize-vertical"
+                    placeholder="Pesan (Opsional)"
+                  ></textarea>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2d8040] text-white text-[0.68rem] font-medium"
+                      onclick="alert('Stiker segera hadir! 🎉')"
+                    >
+                      🎭 Stiker
+                    </button>
+                    <button
+                      type="reset"
+                      class="px-4 py-2 rounded-full bg-[#c89820] text-white text-[0.68rem] font-medium"
+                    >
+                      Batal
+                    </button>
+                    <button
+                      type="submit"
+                      class="px-4 py-2 rounded-full bg-cream2 text-brown border border-light text-[0.68rem] font-bold ml-auto hover:bg-terra hover:text-white hover:border-terra transition-all"
+                    >
+                      Kirim ›
+                    </button>
                   </div>
-                  <p class="font-serif text-[0.95rem] font-bold text-brown">
-                    082284865780
-                  </p>
-                  <p class="text-[0.62rem] text-muted mb-1">(DANA)</p>
-                  <p class="text-[0.67rem] text-muted">
-                    Atas Nama Nakata Christian
-                  </p>
-                  <button
-                    class="mt-2 px-3.5 py-1 border border-light rounded-full bg-cream text-[0.62rem] text-muted hover:bg-teal hover:text-white hover:border-teal transition-all"
-                    onclick="copyText('082284865780')"
-                  >
-                    Salin
-                  </button>
+                </form>
+              </div>
+              
+              <div id="msg-list" class="mt-6 text-left">
+                <?php while ($row_p = mysqli_fetch_assoc($query_pesan)) : 
+                    $label = [
+                        'hadir' => ['Hadir', 'bg-[#dcf0e0] text-[#2d6030]'],
+                        'tidak' => ['Tidak Hadir', 'bg-[#fde8e0] text-[#8a2010]'],
+                        'ragu'  => ['Masih Ragu', 'bg-[#fff3d0] text-[#8a6010]']
+                    ];
+                    $status = isset($label[$row_p['kehadiran']]) ? $label[$row_p['kehadiran']] : ['-', ''];
+                ?>
+                <div class="flex gap-3 py-3 border-b border-terra/10">
+                    <div class="w-[34px] h-[34px] rounded-full bg-gradient-to-br from-terra to-terra2 flex items-center justify-center text-white font-bold text-[0.78rem] shrink-0">
+                        <?php echo strtoupper($row_p['nama'][0]); ?>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[0.8rem] font-semibold text-brown"><?php echo htmlspecialchars($row_p['nama']); ?></span>
+                            <span class="text-[0.57rem] px-2 py-0.5 rounded-full <?php echo $status[1]; ?>"><?php echo $status[0]; ?></span>
+                        </div>
+                        <p class="text-[0.74rem] text-muted leading-relaxed"><?php echo htmlspecialchars($row_p['pesan']); ?></p>
+                        <p class="text-[0.6rem] text-light mt-1"><?php echo date('d/m/Y H:i', strtotime($row_p['waktu'])); ?></p>
+                    </div>
                 </div>
-                <div
-                  class="reveal d2 bg-white rounded-xl p-4 shadow-sm text-left flex-1 max-w-[220px]"
-                >
-                  <div
-                    class="w-9 h-9 bg-teal rounded-lg text-white font-bold text-[0.95rem] flex items-center justify-center mb-2.5"
-                  >
-                    D
-                  </div>
-                  <p class="font-serif text-[0.95rem] font-bold text-brown">
-                    082285468511
-                  </p>
-                  <p class="text-[0.62rem] text-muted mb-1">(DANA)</p>
-                  <p class="text-[0.67rem] text-muted">
-                    Atas Nama Sari Rizky Mei Putri
-                  </p>
-                  <button
-                    class="mt-2 px-3.5 py-1 border border-light rounded-full bg-cream text-[0.62rem] text-muted hover:bg-teal hover:text-white hover:border-teal transition-all"
-                    onclick="copyText('082285468511')"
-                  >
-                    Salin
-                  </button>
-                </div>
+                <?php endwhile; ?>
               </div>
             </div>
           </section>
@@ -845,8 +813,6 @@
     </div>
 
     <script>
-      const gn = new URLSearchParams(location.search).get("to") || "Selvia";
-      document.getElementById("g-name").textContent = gn;
       let currentIdx = 0;
       const sections = document.querySelectorAll("section");
       const btnL = document.getElementById("nav-left");
@@ -918,22 +884,10 @@
             h = Math.floor((diff % 86400000) / 3600000),
             m = Math.floor((diff % 3600000) / 60000),
             s = Math.floor((diff % 60000) / 1000);
-          document.getElementById("cd").textContent = String(d).padStart(
-            2,
-            "0",
-          );
-          document.getElementById("ch").textContent = String(h).padStart(
-            2,
-            "0",
-          );
-          document.getElementById("cm").textContent = String(m).padStart(
-            2,
-            "0",
-          );
-          document.getElementById("cs").textContent = String(s).padStart(
-            2,
-            "0",
-          );
+          document.getElementById("cd").textContent = String(d).padStart(2, "0");
+          document.getElementById("ch").textContent = String(h).padStart(2, "0");
+          document.getElementById("cm").textContent = String(m).padStart(2, "0");
+          document.getElementById("cs").textContent = String(s).padStart(2, "0");
         }
         tick();
         setInterval(tick, 1000);
@@ -952,49 +906,6 @@
           { threshold: 0.12 },
         );
         document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
-      }
-
-      let messages = [];
-      const slbl = { hadir: "Hadir", tidak: "Tidak Hadir", ragu: "Masih Ragu" };
-      function submitMsg() {
-        const n = document.getElementById("fn").value.trim(),
-          a = document.getElementById("fa").value,
-          m = document.getElementById("fm").value.trim();
-        if (!n || !m) {
-          alert("Isi nama dan pesan!");
-          return;
-        }
-        const t = new Date().toLocaleTimeString("id-ID", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-        messages.unshift({ n, a, m, t });
-        renderMsgs();
-        clrForm();
-      }
-      function clrForm() {
-        document.getElementById("fn").value = "";
-        document.getElementById("fm").value = "";
-        document.getElementById("fa").selectedIndex = 0;
-      }
-      function esc(s) {
-        return s.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
-      }
-
-      function renderMsgs() {
-        const el = document.getElementById("msg-list");
-        el.innerHTML = messages
-          .map((m) => {
-            const bCls =
-              m.a === "hadir"
-                ? "bg-[#dcf0e0] text-[#2d6030]"
-                : m.a === "tidak"
-                  ? "bg-[#fde8e0] text-[#8a2010]"
-                  : "bg-[#fff3d0] text-[#8a6010]";
-            return `<div class="flex gap-3 py-3 border-b border-terra/10"><div class="w-[34px] h-[34px] rounded-full bg-gradient-to-br from-terra to-terra2 flex items-center justify-center text-white font-bold text-[0.78rem] shrink-0">${esc(m.n[0].toUpperCase())}</div><div class="flex-1"><div class="flex justify-between items-center mb-1"><span class="text-[0.8rem] font-semibold text-brown">${esc(m.n)}</span><span class="text-[0.57rem] px-2 py-0.5 rounded-full ${bCls}">${slbl[m.a]}</span></div><p class="text-[0.74rem] text-muted leading-relaxed">${esc(m.m)}</p><p class="text-[0.6rem] text-light mt-1">${m.t}</p></div></div>`;
-          })
-          .join("");
       }
 
       function copyText(t) {
