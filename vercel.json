@@ -7,7 +7,20 @@
     {
       "src": "*.php",
       "use": "vercel-php@0.7.1"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/**/*.!(php)",
+      "use": "@vercel/static"
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/$1" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
