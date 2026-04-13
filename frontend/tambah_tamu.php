@@ -1,6 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['login'])) {
+if (!isset($_COOKIE['login_admin']) || $_COOKIE['login_admin'] !== 'true') {
     header("Location: login.php");
     exit;
 }
@@ -15,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!doctype html>
 <html lang="id">
 <head>
