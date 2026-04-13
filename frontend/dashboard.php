@@ -146,8 +146,10 @@ $daftar_tamu = mysqli_query($conn, "SELECT * FROM tamu ORDER BY waktu DESC");
                                 </tr>
                             </thead>
                             <tbody class="text-left sm:text-center text-xs sm:text-sm">
-                                <?php while ($row = mysqli_fetch_assoc($daftar_tamu)) : 
-                                    $link_undangan = "http://localhost/frontend/undangan.php?to=" . urlencode($row['nama']); 
+                               <?php while ($row = mysqli_fetch_assoc($daftar_tamu)) : 
+                                    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+                                    $host = $_SERVER['HTTP_HOST'];
+                                    $link_undangan = $protocol . "://" . $host . "/frontend/undangan.php?to=" . urlencode($row['nama']); 
                                     
                                     $status_map = [
                                         'hadir' => ['Hadir', 'bg-green-500 text-white'],
