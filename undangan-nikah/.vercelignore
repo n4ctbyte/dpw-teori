@@ -1,0 +1,8 @@
+/node_modules
+/tests
+/.github
+/.git
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
