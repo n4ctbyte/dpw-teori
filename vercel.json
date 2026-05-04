@@ -1,26 +1,27 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "frontend/**/*.php",
-      "use": "vercel-php@0.7.1"
+      "src": "undangan-nikah/api/index.php",
+      "use": "vercel-php@0.6.2"
     },
     {
-      "src": "*.php",
-      "use": "vercel-php@0.7.1"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "frontend/**/*.!(php)",
+      "src": "undangan-nikah/public/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/build/(.*)",
+      "dest": "/undangan-nikah/public/build/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/undangan-nikah/public/assets/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/undangan-nikah/api/index.php"
     }
   ]
 }
